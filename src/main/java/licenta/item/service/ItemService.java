@@ -21,8 +21,12 @@ public class ItemService {
         itemDao.addItem(menuId);
     }
 
-    public void editItem(int id, int menuId, String title, String content, int indexPos, int textSize, String textFont, int fontWeight, int minHeight, int maxHeight, int minWidth, int maxWidth, int marginTop, int marginBottom, int marginLeft, int marginRight) {
-        itemDao.editItem(id, menuId, title, content, indexPos, textSize, textFont, fontWeight, minHeight, maxHeight, minWidth, maxWidth, marginTop, marginBottom, marginLeft, marginRight);
+    public void editItem(ItemDto itemDto) {
+        itemDao.editItem(
+            itemDto.getId(), itemDto.getMenuId(), itemDto.getTitle(), itemDto.getContent(), itemDto.getIndexPos(), itemDto.getTextSize(),
+            itemDto.getTextFont(), itemDto.getFontWeight(), itemDto.getMinHeight(), itemDto.getMaxHeight(), itemDto.getMinWidth(), itemDto.getMaxWidth(),
+            itemDto.getMarginTop(), itemDto.getMarginBottom(), itemDto.getMarginLeft(), itemDto.getMarginRight()
+        );
     }
 
     public void deleteItem(int id, int menuId) {

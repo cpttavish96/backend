@@ -4,8 +4,11 @@ import licenta.menus.dto.MenuDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 @Repository
@@ -15,7 +18,8 @@ public class MenuDao {
     private JdbcTemplate jdbcTemplate;
 
     public List<MenuDto> getUserMenus(int userId) {
-        return jdbcTemplate.query("SELECT * FROM menus WHERE user_id = ?", new MenuRowMapper() {}, userId );
+        String sql = "SELECT * FROM menus WHERE user_id = ? ORDER BY index_pos ASC";
+        return jdbcTemplate.query(sql, new MenuRowMapper() {}, userId );
     }
 
     public void addMenu(int userId) {
@@ -39,6 +43,15 @@ public class MenuDao {
     }
 
     public void editMenu(int id, int userId, String title, int indexPos, int textSize, String textFont, int fontWeight, int minHeight, int maxHeight, int minWidth, int maxWidth, int marginTop, int marginBottom, int marginLeft, int marginRight) {
+
+        List<Integer> indexes = getIndexes(userId);
+
+        if (indexes.stream().filter(x -> x == indexPos).count() == 0) {
+
+        } else {
+
+        }
+
         jdbcTemplate.update(
             "UPDATE " +
             "   menus " +
@@ -76,6 +89,16 @@ public class MenuDao {
             return 0;
         }
     }
+
+    private List<Integer> getIndexes(int userId) {
+        String sql = "SELECT index_pos FROM menus WHERE user_id = ?";
+        return jdbcTemplate.query(sql, new Object[] { userId }, new RowMapper<Integer>() {
+            public Integer mapRow(ResultSet rs, int rowNum) throws SQLException {
+                return rs.getInt(1);
+            }
+        });
+    }
+
 
     private Integer getUserMenuCount(int userId) {
         try {

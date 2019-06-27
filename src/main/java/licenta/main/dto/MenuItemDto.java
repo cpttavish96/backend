@@ -1,6 +1,6 @@
-package licenta.menus.dto;
+package licenta.main.dto;
 
-public class MenuDto {
+public class MenuItemDto {
     private int id;
     private int userId;
     private String title;
@@ -17,126 +17,81 @@ public class MenuDto {
     private int marginLeft;
     private int marginRight;
 
-    public MenuDto() {
+    public MenuItemDto(int id, int userId, String title, int indexPos, int textSize, String textFont, int fontWeight, int minHeight, int maxHeight, int minWidth, int maxWidth, int marginTop, int marginBottom, int marginLeft, int marginRight) {
+        this.id = id;
+        this.userId = userId;
+        this.title = title;
+        this.indexPos = indexPos;
+        this.textSize = textSize;
+        this.textFont = textFont;
+        this.fontWeight = fontWeight;
+        this.minHeight = minHeight;
+        this.maxHeight = maxHeight;
+        this.minWidth = minWidth;
+        this.maxWidth = maxWidth;
+        this.marginTop = marginTop;
+        this.marginBottom = marginBottom;
+        this.marginLeft = marginLeft;
+        this.marginRight = marginRight;
     }
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public int getUserId() {
         return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public int getIndexPos() {
         return indexPos;
-    }
-
-    public void setIndexPos(int indexPos) {
-        this.indexPos = indexPos;
     }
 
     public int getTextSize() {
         return textSize;
     }
 
-    public void setTextSize(int textSize) {
-        this.textSize = textSize;
-    }
-
     public String getTextFont() {
         return textFont;
-    }
-
-    public void setTextFont(String textFont) {
-        this.textFont = textFont;
     }
 
     public int getFontWeight() {
         return fontWeight;
     }
 
-    public void setFontWeight(int fontWeight) {
-        this.fontWeight = fontWeight;
-    }
-
     public int getMinHeight() {
         return minHeight;
-    }
-
-    public void setMinHeight(int minHeight) {
-        this.minHeight = minHeight;
     }
 
     public int getMaxHeight() {
         return maxHeight;
     }
 
-    public void setMaxHeight(int maxHeight) {
-        this.maxHeight = maxHeight;
-    }
-
     public int getMinWidth() {
         return minWidth;
-    }
-
-    public void setMinWidth(int minWidth) {
-        this.minWidth = minWidth;
     }
 
     public int getMaxWidth() {
         return maxWidth;
     }
 
-    public void setMaxWidth(int maxWidth) {
-        this.maxWidth = maxWidth;
-    }
-
     public int getMarginTop() {
         return marginTop;
-    }
-
-    public void setMarginTop(int marginTop) {
-        this.marginTop = marginTop;
     }
 
     public int getMarginBottom() {
         return marginBottom;
     }
 
-    public void setMarginBottom(int marginBottom) {
-        this.marginBottom = marginBottom;
-    }
-
     public int getMarginLeft() {
         return marginLeft;
     }
 
-    public void setMarginLeft(int marginLeft) {
-        this.marginLeft = marginLeft;
-    }
-
     public int getMarginRight() {
         return marginRight;
-    }
-
-    public void setMarginRight(int marginRight) {
-        this.marginRight = marginRight;
     }
 }
